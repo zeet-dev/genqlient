@@ -366,7 +366,10 @@ func (g *generator) convertDefinition(
 	// course, on invalid configuration or internal error.)
 	existing, err := g.getType(name, def.Name, selectionSet, pos)
 	if existing != nil || err != nil {
-		return existing, err
+		if err != nil {
+			fmt.Printf("[WARNING] ignoring type conflict: %v, err: %v\n", existing, err)
+		}
+		return existing, nil
 	}
 
 	desc := descriptionInfo{

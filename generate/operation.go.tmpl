@@ -2,7 +2,7 @@
 const {{.Name}}_Operation = `{{$.Body}}`
 
 {{.Doc}}
-func {{.Name}}(
+func {{.GoName}}(
     {{if ne .Config.ContextType "-" -}}
     ctx_ {{ref .Config.ContextType}},
     {{end}}

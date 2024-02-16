@@ -2,6 +2,7 @@
   "operations": [
     {
       "operationName": "SimpleQuery",
+      "goName": "SimpleQueryQuery",
       "query": "\nquery SimpleQuery {\n\tuser {\n\t\tid\n\t}\n}\n",
       "sourceLocation": "testdata/queries/SimpleQuery.graphql"
     }

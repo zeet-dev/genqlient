@@ -337,7 +337,7 @@ query MultipleDirectives ($query: UserQueryInput, $queries: [UserQueryInput]) {
 }
 `
 
-func MultipleDirectives(
+func MultipleDirectivesQuery(
 	client_ graphql.Client,
 	query MyInput,
 	queries []*UserQueryInput,

@@ -49,7 +49,7 @@ query SimpleQueryWithPointerFalseOverride {
 }
 `
 
-func SimpleQueryWithPointerFalseOverride(
+func SimpleQueryWithPointerFalseOverrideQuery(
 	client_ graphql.Client,
 ) (*SimpleQueryWithPointerFalseOverrideResponse, error) {
 	req_ := &graphql.Request{

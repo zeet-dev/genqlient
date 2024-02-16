@@ -2,6 +2,7 @@
   "operations": [
     {
       "operationName": "QueryWithEnums",
+      "goName": "QueryWithEnumsQuery",
       "query": "\nquery QueryWithEnums {\n\tuser {\n\t\troles\n\t}\n\totherUser: user {\n\t\troles\n\t}\n}\n",
       "sourceLocation": "testdata/queries/QueryWithEnums.graphql"
     }

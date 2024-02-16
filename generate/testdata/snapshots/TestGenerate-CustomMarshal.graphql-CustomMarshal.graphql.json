@@ -2,6 +2,7 @@
   "operations": [
     {
       "operationName": "CustomMarshal",
+      "goName": "CustomMarshalQuery",
       "query": "\nquery CustomMarshal ($date: Date!) {\n\tusersBornOn(date: $date) {\n\t\tid\n\t\tbirthdate\n\t}\n}\n",
       "sourceLocation": "testdata/queries/CustomMarshal.graphql"
     }

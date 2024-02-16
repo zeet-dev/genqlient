@@ -524,7 +524,7 @@ query InterfaceNesting {
 }
 `
 
-func InterfaceNesting(
+func InterfaceNestingQuery(
 	client_ graphql.Client,
 ) (*InterfaceNestingResponse, error) {
 	req_ := &graphql.Request{

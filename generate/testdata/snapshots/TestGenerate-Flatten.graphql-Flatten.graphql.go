@@ -304,7 +304,7 @@ fragment ChildVideoFields on Video {
 }
 `
 
-func ComplexNamedFragments(
+func ComplexNamedFragmentsQuery(
 	client_ graphql.Client,
 ) (*InnerQueryFragment, error) {
 	req_ := &graphql.Request{

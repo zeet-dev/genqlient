@@ -2,6 +2,7 @@
   "operations": [
     {
       "operationName": "SimpleMutation",
+      "goName": "SimpleMutationMutation",
       "query": "\nmutation SimpleMutation ($name: String!) {\n\tcreateUser(name: $name) {\n\t\tid\n\t\tname\n\t}\n}\n",
       "sourceLocation": "testdata/queries/SimpleMutation.graphql"
     }

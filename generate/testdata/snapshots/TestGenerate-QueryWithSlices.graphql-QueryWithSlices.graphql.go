@@ -53,7 +53,7 @@ query QueryWithSlices {
 }
 `
 
-func QueryWithSlices(
+func QueryWithSlicesQuery(
 	client_ graphql.Client,
 ) (*QueryWithSlicesResponse, error) {
 	req_ := &graphql.Request{

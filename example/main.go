@@ -44,8 +44,8 @@ func main() {
 
 	switch len(os.Args) {
 	case 1:
-		var viewerResp *getViewerResponse
-		viewerResp, err = getViewer(context.Background(), graphqlClient)
+		var viewerResp *GetViewerResponse
+		viewerResp, err = GetViewerQuery(context.Background(), graphqlClient)
 		if err != nil {
 			return
 		}
@@ -53,8 +53,8 @@ func main() {
 
 	case 2:
 		username := os.Args[1]
-		var userResp *getUserResponse
-		userResp, err = getUser(context.Background(), graphqlClient, username)
+		var userResp *GetUserResponse
+		userResp, err = GetUserQuery(context.Background(), graphqlClient, username)
 		if err != nil {
 			return
 		}

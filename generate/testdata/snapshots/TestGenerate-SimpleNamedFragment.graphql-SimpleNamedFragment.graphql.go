@@ -571,7 +571,7 @@ fragment VideoFields on Video {
 }
 `
 
-func SimpleNamedFragment(
+func SimpleNamedFragmentQuery(
 	client_ graphql.Client,
 ) (*SimpleNamedFragmentResponse, error) {
 	req_ := &graphql.Request{

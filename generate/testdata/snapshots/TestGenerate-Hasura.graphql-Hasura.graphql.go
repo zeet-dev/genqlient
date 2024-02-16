@@ -91,7 +91,7 @@ query GetPokemon ($where: getPokemonBoolExp!) {
 }
 `
 
-func GetPokemon(
+func GetPokemonQuery(
 	client_ graphql.Client,
 	where *GetPokemonBoolExp,
 ) (*GetPokemonResponse, error) {

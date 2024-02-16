@@ -63,7 +63,7 @@ query InputEnumQuery ($role: Role!) {
 }
 `
 
-func InputEnumQuery(
+func InputEnumQueryQuery(
 	client_ graphql.Client,
 	role Role,
 ) (*InputEnumQueryResponse, error) {

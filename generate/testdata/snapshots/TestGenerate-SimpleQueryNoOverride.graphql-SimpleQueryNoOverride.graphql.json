@@ -2,6 +2,7 @@
   "operations": [
     {
       "operationName": "SimpleQueryNoOverride",
+      "goName": "SimpleQueryNoOverrideQuery",
       "query": "\nquery SimpleQueryNoOverride {\n\tuser {\n\t\tid\n\t\tname\n\t}\n}\n",
       "sourceLocation": "testdata/queries/SimpleQueryNoOverride.graphql"
     }

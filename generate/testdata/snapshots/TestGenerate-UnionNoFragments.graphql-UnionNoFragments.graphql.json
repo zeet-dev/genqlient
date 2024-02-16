@@ -2,6 +2,7 @@
   "operations": [
     {
       "operationName": "UnionNoFragmentsQuery",
+      "goName": "UnionNoFragmentsQueryQuery",
       "query": "\nquery UnionNoFragmentsQuery {\n\trandomLeaf {\n\t\t__typename\n\t}\n}\n",
       "sourceLocation": "testdata/queries/UnionNoFragments.graphql"
     }

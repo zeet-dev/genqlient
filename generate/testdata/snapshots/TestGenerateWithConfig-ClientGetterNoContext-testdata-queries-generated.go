@@ -42,7 +42,7 @@ query SimpleQuery {
 }
 `
 
-func SimpleQuery() (*SimpleQueryResponse, error) {
+func SimpleQueryQuery() (*SimpleQueryResponse, error) {
 	req_ := &graphql.Request{
 		OpName: "SimpleQuery",
 		Query:  SimpleQuery_Operation,

@@ -2,6 +2,7 @@
   "operations": [
     {
       "operationName": "UsesEnumTwiceQuery",
+      "goName": "UsesEnumTwiceQueryQuery",
       "query": "\nquery UsesEnumTwiceQuery {\n\tMe: user {\n\t\troles\n\t}\n\tOtherUser: user {\n\t\troles\n\t}\n}\n",
       "sourceLocation": "testdata/queries/UsesEnumTwice.graphql"
     }

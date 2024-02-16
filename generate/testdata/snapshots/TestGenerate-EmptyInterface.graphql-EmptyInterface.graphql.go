@@ -28,7 +28,7 @@ query EmptyInterface {
 }
 `
 
-func EmptyInterface(
+func EmptyInterfaceQuery(
 	client_ graphql.Client,
 ) (*EmptyInterfaceResponse, error) {
 	req_ := &graphql.Request{

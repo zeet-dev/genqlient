@@ -2392,7 +2392,7 @@ fragment TopicFields on Topic {
 }
 `
 
-func CovariantInterfaceImplementation(
+func CovariantInterfaceImplementationQuery(
 	client_ graphql.Client,
 ) (*CovariantInterfaceImplementationResponse, error) {
 	req_ := &graphql.Request{

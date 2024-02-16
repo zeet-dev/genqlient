@@ -74,7 +74,7 @@ query UsesEnumTwiceQuery {
 }
 `
 
-func UsesEnumTwiceQuery(
+func UsesEnumTwiceQueryQuery(
 	client_ graphql.Client,
 ) (*UsesEnumTwiceQueryResponse, error) {
 	req_ := &graphql.Request{

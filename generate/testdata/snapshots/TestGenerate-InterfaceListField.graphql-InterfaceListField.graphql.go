@@ -544,7 +544,7 @@ query InterfaceListField {
 }
 `
 
-func InterfaceListField(
+func InterfaceListFieldQuery(
 	client_ graphql.Client,
 ) (*InterfaceListFieldResponse, error) {
 	req_ := &graphql.Request{

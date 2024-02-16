@@ -2,6 +2,7 @@
   "operations": [
     {
       "operationName": "ListOfListsOfLists",
+      "goName": "ListOfListsOfListsQuery",
       "query": "\nquery ListOfListsOfLists {\n\tlistOfListsOfLists\n}\n",
       "sourceLocation": "testdata/queries/ListOfListsOfLists.graphql"
     }

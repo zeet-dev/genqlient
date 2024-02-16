@@ -126,7 +126,7 @@ func (g *generator) convertOperation(
 	}
 
 	goType := &goStructType{
-		GoName: name,
+		GoName: capitalized(name),
 		descriptionInfo: descriptionInfo{
 			CommentOverride: fmt.Sprintf(
 				"%v is returned by %v on success.", name, operation.Name),

@@ -25,6 +25,18 @@ const (
 	RoleTeacher Role = "TEACHER"
 )
 
+// unexportedResponse is returned by unexported on success.
+type UnexportedResponse struct {
+	// user looks up a user by some stuff.
+	//
+	// See UserQueryInput for what stuff is supported.
+	// If query is null, returns the current user.
+	User unexportedUser `json:"user"`
+}
+
+// GetUser returns UnexportedResponse.User, and is useful for accessing the field via an interface.
+func (v *UnexportedResponse) GetUser() unexportedUser { return v.User }
+
 // UserQueryInput is the argument to Query.users.
 //
 // Ideally this would support anything and everything!
@@ -151,18 +163,6 @@ type __unexportedInput struct {
 // GetQuery returns __unexportedInput.Query, and is useful for accessing the field via an interface.
 func (v *__unexportedInput) GetQuery() UserQueryInput { return v.Query }
 
-// unexportedResponse is returned by unexported on success.
-type unexportedResponse struct {
-	// user looks up a user by some stuff.
-	//
-	// See UserQueryInput for what stuff is supported.
-	// If query is null, returns the current user.
-	User unexportedUser `json:"user"`
-}
-
-// GetUser returns unexportedResponse.User, and is useful for accessing the field via an interface.
-func (v *unexportedResponse) GetUser() unexportedUser { return v.User }
-
 // unexportedUser includes the requested fields of the GraphQL type User.
 // The GraphQL type's documentation follows.
 //
@@ -186,10 +186,10 @@ query unexported ($query: UserQueryInput) {
 }
 `
 
-func unexported(
+func UnexportedQuery(
 	client_ graphql.Client,
 	query UserQueryInput,
-) (*unexportedResponse, error) {
+) (*UnexportedResponse, error) {
 	req_ := &graphql.Request{
 		OpName: "unexported",
 		Query:  unexported_Operation,
@@ -199,7 +199,7 @@ func unexported(
 	}
 	var err_ error
 
-	var data_ unexportedResponse
+	var data_ UnexportedResponse
 	resp_ := &graphql.Response{Data: &data_}
 
 	err_ = client_.MakeRequest(

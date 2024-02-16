@@ -455,7 +455,7 @@ fragment VideoFields on Video {
 }
 `
 
-func StructOption(
+func StructOptionQuery(
 	client_ graphql.Client,
 ) (*StructOptionResponse, error) {
 	req_ := &graphql.Request{

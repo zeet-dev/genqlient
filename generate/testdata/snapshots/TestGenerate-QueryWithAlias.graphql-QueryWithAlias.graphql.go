@@ -50,7 +50,7 @@ query QueryWithAlias {
 }
 `
 
-func QueryWithAlias(
+func QueryWithAliasQuery(
 	client_ graphql.Client,
 ) (*QueryWithAliasResponse, error) {
 	req_ := &graphql.Request{

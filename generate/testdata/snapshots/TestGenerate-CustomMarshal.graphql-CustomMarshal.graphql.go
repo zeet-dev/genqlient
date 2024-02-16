@@ -184,7 +184,7 @@ query CustomMarshal ($date: Date!) {
 }
 `
 
-func CustomMarshal(
+func CustomMarshalQuery(
 	client_ graphql.Client,
 	date time.Time,
 ) (*CustomMarshalResponse, error) {

@@ -9,6 +9,24 @@ import (
 	"github.com/Khan/genqlient/graphql"
 )
 
+// getUserResponse is returned by getUser on success.
+type GetUserResponse struct {
+	// Lookup a user by login.
+	User getUserUser `json:"user"`
+}
+
+// GetUser returns GetUserResponse.User, and is useful for accessing the field via an interface.
+func (v *GetUserResponse) GetUser() getUserUser { return v.User }
+
+// getViewerResponse is returned by getViewer on success.
+type GetViewerResponse struct {
+	// The currently authenticated user.
+	Viewer getViewerViewerUser `json:"viewer"`
+}
+
+// GetViewer returns GetViewerResponse.Viewer, and is useful for accessing the field via an interface.
+func (v *GetViewerResponse) GetViewer() getViewerViewerUser { return v.Viewer }
+
 // __getUserInput is used internally by genqlient
 type __getUserInput struct {
 	Login string `json:"Login"`
@@ -16,15 +34,6 @@ type __getUserInput struct {
 
 // GetLogin returns __getUserInput.Login, and is useful for accessing the field via an interface.
 func (v *__getUserInput) GetLogin() string { return v.Login }
-
-// getUserResponse is returned by getUser on success.
-type getUserResponse struct {
-	// Lookup a user by login.
-	User getUserUser `json:"user"`
-}
-
-// GetUser returns getUserResponse.User, and is useful for accessing the field via an interface.
-func (v *getUserResponse) GetUser() getUserUser { return v.User }
 
 // getUserUser includes the requested fields of the GraphQL type User.
 // The GraphQL type's documentation follows.
@@ -42,15 +51,6 @@ func (v *getUserUser) GetTheirName() string { return v.TheirName }
 
 // GetCreatedAt returns getUserUser.CreatedAt, and is useful for accessing the field via an interface.
 func (v *getUserUser) GetCreatedAt() time.Time { return v.CreatedAt }
-
-// getViewerResponse is returned by getViewer on success.
-type getViewerResponse struct {
-	// The currently authenticated user.
-	Viewer getViewerViewerUser `json:"viewer"`
-}
-
-// GetViewer returns getViewerResponse.Viewer, and is useful for accessing the field via an interface.
-func (v *getViewerResponse) GetViewer() getViewerViewerUser { return v.Viewer }
 
 // getViewerViewerUser includes the requested fields of the GraphQL type User.
 // The GraphQL type's documentation follows.
@@ -80,11 +80,11 @@ query getUser ($Login: String!) {
 `
 
 // getUser gets the given user's name from their username.
-func getUser(
+func GetUserQuery(
 	ctx_ context.Context,
 	client_ graphql.Client,
 	Login string,
-) (*getUserResponse, error) {
+) (*GetUserResponse, error) {
 	req_ := &graphql.Request{
 		OpName: "getUser",
 		Query:  getUser_Operation,
@@ -94,7 +94,7 @@ func getUser(
 	}
 	var err_ error
 
-	var data_ getUserResponse
+	var data_ GetUserResponse
 	resp_ := &graphql.Response{Data: &data_}
 
 	err_ = client_.MakeRequest(
@@ -116,17 +116,17 @@ query getViewer {
 }
 `
 
-func getViewer(
+func GetViewerQuery(
 	ctx_ context.Context,
 	client_ graphql.Client,
-) (*getViewerResponse, error) {
+) (*GetViewerResponse, error) {
 	req_ := &graphql.Request{
 		OpName: "getViewer",
 		Query:  getViewer_Operation,
 	}
 	var err_ error
 
-	var data_ getViewerResponse
+	var data_ GetViewerResponse
 	resp_ := &graphql.Response{Data: &data_}
 
 	err_ = client_.MakeRequest(

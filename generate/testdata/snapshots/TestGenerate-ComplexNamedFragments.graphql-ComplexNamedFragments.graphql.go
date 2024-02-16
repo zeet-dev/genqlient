@@ -2599,7 +2599,7 @@ fragment MoreVideoFields on Video {
 }
 `
 
-func ComplexNamedFragments(
+func ComplexNamedFragmentsQuery(
 	client_ graphql.Client,
 ) (*ComplexNamedFragmentsResponse, error) {
 	req_ := &graphql.Request{
@@ -2652,7 +2652,7 @@ fragment SimpleLeafContent on LeafContent {
 }
 `
 
-func ComplexNamedFragmentsWithInlineUnion(
+func ComplexNamedFragmentsWithInlineUnionQuery(
 	client_ graphql.Client,
 ) (*ComplexNamedFragmentsWithInlineUnionResponse, error) {
 	req_ := &graphql.Request{

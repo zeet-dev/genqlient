@@ -23,7 +23,7 @@ query ListOfListsOfLists {
 }
 `
 
-func ListOfListsOfLists(
+func ListOfListsOfListsQuery(
 	client_ graphql.Client,
 ) (*ListOfListsOfListsResponse, error) {
 	req_ := &graphql.Request{

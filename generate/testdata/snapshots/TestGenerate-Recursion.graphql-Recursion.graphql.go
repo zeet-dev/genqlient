@@ -83,7 +83,7 @@ query Recursion ($input: RecursiveInput!) {
 }
 `
 
-func Recursion(
+func RecursionQuery(
 	client_ graphql.Client,
 	input RecursiveInput,
 ) (*RecursionResponse, error) {

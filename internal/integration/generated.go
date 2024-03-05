@@ -3079,6 +3079,9 @@ func (v *simpleQueryMeUser) GetName() string { return v.Name }
 // GetLuckyNumber returns simpleQueryMeUser.LuckyNumber, and is useful for accessing the field via an interface.
 func (v *simpleQueryMeUser) GetLuckyNumber() int { return v.LuckyNumber }
 
+// GetGreatScalar returns simpleQueryMeUser.GreatScalar, and is useful for accessing the field via an interface.
+func (v *simpleQueryMeUser) GetGreatScalar() MyGreatScalar { return v.GreatScalar }
+
 // The query or mutation executed by createUser.
 const createUser_Operation = `
 mutation createUser ($user: NewUser!) {

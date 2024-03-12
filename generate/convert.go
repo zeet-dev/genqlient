@@ -126,7 +126,7 @@ func (g *generator) convertOperation(
 	}
 
 	goType := &goStructType{
-		GoName: capitalized(name),
+		GoName: upperFirst(name),
 		descriptionInfo: descriptionInfo{
 			CommentOverride: fmt.Sprintf(
 				"%v is returned by %v on success.", name, operation.Name),
@@ -357,7 +357,7 @@ func (g *generator) convertDefinition(
 		// (namePrefix is ignored in this case.)
 	} else {
 		// Else, construct a name using the usual algorithm (see names.go).
-		name = makeTypeName(namePrefix, def.Name)
+		name = upperFirst(makeTypeName(namePrefix, def.Name))
 	}
 
 	// If we already generated the type, we can skip it as long as it matches

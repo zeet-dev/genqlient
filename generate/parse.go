@@ -78,7 +78,13 @@ func getAndValidateQueries(basedir string, filenames StringList, schema *ast.Sch
 	// Cf. gqlparser.LoadQuery
 	graphqlErrors := validator.Validate(schema, queryDoc)
 	if graphqlErrors != nil {
-		return nil, errorf(nil, "query-spec does not match schema: %v", graphqlErrors)
+		if len(graphqlErrors) == 1 && strings.Contains(graphqlErrors[0].Message, "is never used") {
+			// This is a common error when using fragments, and it's not very
+			// useful to the user.  So we suppress it.
+			fmt.Printf("warning: query-spec does not match schema: %v", graphqlErrors[0].Message)
+		} else {
+			return nil, errorf(nil, "query-spec does not match schema: %v", graphqlErrors)
+		}
 	}
 
 	return queryDoc, nil

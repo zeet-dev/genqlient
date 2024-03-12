@@ -245,10 +245,6 @@ func (g *generator) validateOperation(op *ast.OperationDefinition) error {
 	return nil
 }
 
-func capitalized(s string) string {
-	return strings.ToUpper(s[:1]) + s[1:]
-}
-
 // addOperation adds to g.Operations the information needed to generate a
 // genqlient entrypoint function for the given operation.  It also adds to
 // g.typeMap any types referenced by the operation, except for types belonging
@@ -302,7 +298,7 @@ func (g *generator) addOperation(op *ast.OperationDefinition) error {
 	g.Operations = append(g.Operations, &operation{
 		Type:   op.Operation,
 		Name:   op.Name,
-		GoName: capitalized(op.Name) + capitalized(string(op.Operation)),
+		GoName: upperFirst(op.Name) + upperFirst(string(op.Operation)),
 		Doc:    docComment,
 		// The newline just makes it format a little nicer.  We add it here
 		// rather than in the template so exported operations will match

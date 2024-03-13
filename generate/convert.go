@@ -189,7 +189,7 @@ func (g *generator) convertArguments(
 			GoType:      goTyp,
 			JSONName:    arg.Variable,
 			GraphQLName: arg.Variable,
-			Omitempty:   options.GetOmitempty(),
+			Omitempty:   checkOmitEmpty(goTyp, options),
 		}
 	}
 	goTyp := &goStructType{
@@ -283,6 +283,28 @@ func (g *generator) getStructReference(
 ) bool {
 	return g.Config.StructReferences &&
 		(def.Kind == ast.Object || def.Kind == ast.InputObject)
+}
+
+func checkOmitEmpty(typ goType, options *genqlientDirective) bool {
+	// user specified omitempty
+	if options.GetOmitempty() {
+		return true
+	}
+	if options.OmitemptyIsFalse() {
+		return false
+	}
+
+	// if the type is a pointer, we should use omitempty
+	if typ.IsPointer() {
+		return true
+	}
+
+	// if the type is a slice, we should use omitempty
+	if _, ok := typ.(*goSliceType); ok {
+		return true
+	}
+
+	return false
 }
 
 // convertDefinition decides the Go type we will generate corresponding to a
@@ -459,7 +481,7 @@ func (g *generator) convertDefinition(
 				JSONName:    field.Name,
 				GraphQLName: field.Name,
 				Description: field.Description,
-				Omitempty:   fieldOptions.GetOmitempty(),
+				Omitempty:   checkOmitEmpty(fieldGoType, fieldOptions),
 			}
 		}
 		return goType, nil
@@ -917,5 +939,6 @@ func (g *generator) convertField(
 		JSONName:    field.Alias,
 		GraphQLName: field.Name,
 		Description: field.Definition.Description,
+		Omitempty:   checkOmitEmpty(fieldGoType, fieldOptions),
 	}, nil
 }
